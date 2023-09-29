@@ -1,0 +1,28 @@
+///100 days of RTL Challenge///
+
+///Abilash P///
+
+///Full Subractor///
+
+module full_subractor (a_in, b_in, bb_in, diff, borrow);
+
+input a_in, b_in, bb_in;
+
+output diff, borrow;
+
+wire w1, w2, w3;
+
+half_subractor FS1 (.a_in(a_in), .b_in(b_in),  .diff(w1),   .borrow(w2));
+
+half_subractor FS2 (.a_in(w1),   .b_in(bb_in), .diff(diff), .borrow(w3));
+
+or or1 (borrow,w2,w3);
+
+endmodule
+
+
+//using assign method
+
+//assign diff = a_in ^ b_in ^ c_in;
+
+//assign borrow = (~a_in)&b_in + (~a_in&bb_in) + (b_in&bb_in)
