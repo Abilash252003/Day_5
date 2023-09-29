@@ -1,0 +1,35 @@
+///100 days of RTL Challenge///
+
+///Abilash P///
+
+///Full Subractor///
+
+module full_subractor_tb ();
+
+reg  a_in, b_in, bb_in;
+
+wire diff, borrow;
+
+full_subractor FS (.a_in(a_in), .b_in(b_in), .bb_in(bb_in), .diff(diff), .borrow(borrow));
+
+integer i;
+
+initial
+begin
+  a_in  = 1'b0;
+  b_in  = 1'b0;
+  bb_in = 1'b0;
+end
+
+initial
+begin 
+  for(i=0; i<8; i=i+1)
+  begin
+     {a_in,b_in,bb_in} = i;
+      #10;
+   end
+end
+
+initial
+$monitor ("Input A = %b----Input B = %b----Input BBin = %b----Output diff = %b----borrow = %b",a_in,b_in,bb_in,diff,borrow);
+endmodule
